@@ -5,9 +5,20 @@ meta {
 }
 
 get {
-  url: {{base_url}} /breeds/image/random
+  url: {{base_url}}/breeds/image/random
   body: none
   auth: inherit
+}
+
+tests {
+  test("Status should be 200", () => {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Response has message", () => {
+    expect(res.body.message).to.exist;
+  });
+  
 }
 
 settings {
