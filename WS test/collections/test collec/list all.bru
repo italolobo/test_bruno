@@ -1,16 +1,15 @@
 meta {
-  name: random
+  name: list all
   type: http
-  seq: 1
+  seq: 2
 }
 
 get {
-  url: {{base_url}} /breeds/image/random
+  url: {{base_url}}/breeds/list/all
   body: none
   auth: inherit
 }
 
 settings {
   encodeUrl: true
-  timeout: 0
 }
