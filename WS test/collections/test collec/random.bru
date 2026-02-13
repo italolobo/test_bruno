@@ -10,14 +10,29 @@ get {
   auth: inherit
 }
 
-tests {
-  test("Status should be 200", () => {
-    expect(res.status).to.equal(200);
-  });
+assert {
+  res.status: eq 200
+  res.body.status: eq success
+  res.body: isNotEmpty
+}
+
+script:post-response {
+  console.log(res.status);
+  console.log(res.statusText);
+  console.log(res.headers);
+  console.log(res.responseTime);
   
-  test("Response has message", () => {
-    expect(res.body.message).to.exist;
-  });
+}
+
+tests {
+  // test("Status should be 200", () => {
+  //   expect(res.status).to.equal(200);
+  // });
+  
+  // test("Response has message", () => {
+  //   expect(res.body.message).to.exist;
+  // });
+  
   
 }
 

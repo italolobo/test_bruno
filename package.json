@@ -1,0 +1,22 @@
+{
+  "name": "test_bruno",
+  "version": "1.0.0",
+  "description": "test_bruno",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/italolobo/test_bruno.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/italolobo/test_bruno/issues"
+  },
+  "homepage": "https://github.com/italolobo/test_bruno#readme",
+  "dependencies": {
+    "zod": "^4.3.6"
+  }
+}
