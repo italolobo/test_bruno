@@ -11,16 +11,19 @@ get {
 }
 
 tests {
-  const { DogResponseSchema } = require("./_shared/schemas/dog.schema.js");
-  const { validateSchema } = require("./_shared/helpers/contract.js");
+  const { DogListSchema } = require("./_shared/schemas/dog.schema.js");
+  const { validateSchemaData } = require("./_shared/helpers/contract.js");
   
-  test("Contract: Dog API", () => {
-    validateSchema(DogResponseSchema, res.body);
+  
+  test("Contract: Dog list", () => {
+    validateSchemaData(DogListSchema, res.body);
+    //italo
   });
-  
 }
 
 settings {
   encodeUrl: true
   timeout: 0
+  followRedirects: true
+  maxRedirects: 5
 }

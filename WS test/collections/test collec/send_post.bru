@@ -1,0 +1,95 @@
+meta {
+  name: send_post
+  type: http
+  seq: 5
+}
+
+post {
+  url: https://reqres.in/api/users
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "Jane",
+    "job": "QA Engineer"
+  }
+}
+
+body:multipart-form {
+  title: test_bruno
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+example {
+  name: 403
+  
+  request: {
+    url: https://reqres.in/api/users
+    method: POST
+    mode: multipartForm
+    headers: {
+      Content-Type: application/json
+    }
+  
+    body:json: {
+      {
+        "name": "Jane",
+        "job": "QA Engineer"
+      }
+    }
+  
+    body:multipart-form: {
+      title: test_bruno
+    }
+  }
+  
+  response: {
+    headers: {
+      date: Fri, 13 Feb 2026 16:07:32 GMT
+      content-type: text/html; charset=UTF-8
+      transfer-encoding: chunked
+      connection: close
+      accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+      cf-mitigated: challenge
+      critical-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+      cross-origin-embedder-policy: require-corp
+      cross-origin-opener-policy: same-origin
+      cross-origin-resource-policy: same-origin
+      origin-agent-cluster: ?1
+      permissions-policy: accelerometer=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()
+      referrer-policy: same-origin
+      server-timing: chlray;desc="9cd5944e5e756920"
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      cache-control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      expires: Thu, 01 Jan 1970 00:00:01 GMT
+      report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=A2DdA4%2BDZ7jLmLatVgh39qhR8YX59jWHbCAtZxeGX%2FSxPNO41LZn6rApXwlEhC%2FL%2F723cBF4qMZNJGrys3AZSWMKZMySkJwsk6dOaxSPcW0ICB%2FwwJRyqqHvqQ%3D%3D"}],"group":"cf-nel","max_age":604800}
+      nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+      vary: Accept-Encoding
+      server: cloudflare
+      cf-ray: 9cd5944e5e756920-LIS
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: html
+      content: '''
+        <!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;padding-left:1.5rem;max-width:60rem}@media (width <= 720px){.main-content{margin-top:4rem}}.h2{line-height:2.25rem;font-size:1.5rem;font-weight:500}@media (width <= 720px){.h2{line-height:1.5rem;font-size:1.25rem}}#challenge-error-text{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+");background-repeat:no-repeat;background-size:contain;padding-left:34px}@media (prefers-color-scheme: dark){body{background-color:#222;color:#d9d9d9}}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script>(function(){window._cf_chl_opt = {cvId: '3',cZone: 'reqres.in',cType: 'managed',cRay: '9cd5944e5e756920',cH: 'Kd93Jue6dIxEBIXNpxuFbsNTPVrrcX3SJSCAqN9HMiM-1770998852-1.2.1.1-neDYzXdvIBQPvhu0zZp5gGZdJordP.x78ePiaSfyuyXWr5N2Pf5t.Zvqult87Ug6',cUPMDTk:"\/api\/users?__cf_chl_tk=TIDS1ggxyYgjFHmHdNKv3EAfw2CDZmCx3uhKZJXav.0-1770998852-1.0.1.1-HVyeTubKdBaiKjKKqHZGs1GHR39dP0H5SCExI.4v3xo",cFPWv: 'g',cITimeS: '1770998852',cTplC:0,cTplV:5,cTplB: '0',fa:"\/api\/users?__cf_chl_f_tk=TIDS1ggxyYgjFHmHdNKv3EAfw2CDZmCx3uhKZJXav.0-1770998852-1.0.1.1-HVyeTubKdBaiKjKKqHZGs1GHR39dP0H5SCExI.4v3xo",md: 'UHh4rb9gTGfN9Z9UNOuiMWxO1D9vNeUTV83vmXSj6uU-1770998852-1.2.1.1-Qf8C8P3Rky9b.iWiMnIfNaiOaBV6XNBn5ydPviORl33v.VfGS8gFPetv1mBBzrm7jWGCzz9fFHbdZsYwJ3lzZwleKonFHVpoTst28qodXlo28DmdyOkaGU6Zhf4m85jmeZv47OuBAW59qcPbkeerD6cyjioHj2PcfNudVi61EsUNxtKMjOdVP6fPMZkw8Q9a7vn.2QalDL70N_Nj7SrETHUF95okEryaVGPks5lLa6LykgJ9DDyxR6szyF0Qqpq63sUSfLZdVJq1cQ0P.SdnNQD0Y3oBRGgAE7AC0Mv91wKLxaHMHceVEiOEH5Y.PQu.LO1dr_FerR0ZrF7YPdUkpkBQ3XkVYOgVODUTY5nc7CGxQpVgLuhjEJr0epUwVURqteL_oj.lu41U5_iaALWfnIhXgezM8MbZG5eXMSBL1FpRT5FDK4zSVCCtTICNCW4ui8oez21c_Uh4Lj4eGK3ABK6ndCMFhsjBYhetqea0pncFjj6Q3M5zy911CXlhFTYjpn4GOYtNO.JoYnlu.Mv3UxWU1NB85IAVdPEYPRxbj3lEKw8FnnyJ.6tC9eskk.3LX2WtYU9y5SzHXAKklpvS5sUIyik_S_38TYcqkCiZJNw1rj7ZnbEMK.v0vh4b14t_7p0OTlXiTmVLj8syRw3eBcLxnPRv0jSCvlcaJKpdVXLdLitL_H3JqbAMZIT1mR5XQLjlB.UcA9erUNSkrnz0N9TSH1YbrSMA9a6XR6D8ZTSiWdWSVly5G1HEYJ241StRHtIfJSL9GXeLUOfAOaIyZ4itZo5lL8v2FJAEIi7MSGgnXaNIB3zJKbykmW47G.x9b_IPPN5nyiDDT3YWPpS.KSNJHqKaT7e4KRIwRNimWKyDu8la2gEE6LfigXc0RMwL_Q8CYsnnGzS0tKc7USeiOA',mdrd: 'DZhG1cjFXfMZ_udLFidDJkzQrbOSFVnSbQbXpkp.JLc-1770998852-1.2.1.1-qyzg9iusEF9Bj717GkVDI_O6qIHSPavnnvJc1bYqXo9gM2uUzfKmiy6ymHY5jdn5WoglYMpX6pYKMJ5jjGVle40CFcaiIUwAtmUDQKf3GEE5Iu9xaniIPE6G0YUEuDf_ZIaTioq5se4LXjHjRbdR_k35u.X9fLRzjUvaq1Mzur8MroJCLCIJoj3HCYh6EXjta4DqLtY6B9kJkXhQL5F9wOpU.TT_pyPssPUqMkPDJ8XdntqmhCFzpZSdjreyOLKPVdpXHbG2bRvWr43330SsPV8BLIMrslpeTis2jIzg6SsHHcH5GUIozrLK7p2qjB79iTFeKpSMxMMEj5BTSjdo3V62jRLOf80_SNLdKLIjpz3hFTupCuCrl36DlVGPY_3Ano4_vlEz6GchNOMpbZ6BQZVe2Kl3l9NJUBzd9DIofWsZgJ_VaJ3TrT5K.xmsU_fJgdbAG6dYDy_tEi185ugY2iIFAyKLihYa4R8pSoLRF5M2Fdsgh25Wr03JnVIn0G1iYGM.aSCENeEgzRm92LOmz1wC5KT9T.YEVE.0xS8x60McynkEVLi6ewsH1TToNQXNhfL__bXley4DeKoJr.2i0fPauVe10cPZpPLBWTZvIqWQaltamV.qcpfdTvSWJN26AFGLW6m_y3QOv4QIxYqEHQXhKuEw17gHVQtNTtgjsgVxVZqHqv07VQe8SvqiHXJ4q8Eo4FLe_rq252SfcOz9FkXhdKdxhyjRTzk0tDtz2soXzUDPoO01d37tU4ck7EinOYJRTTZqhrKCzbRfwdwGN0ABv0.3Y2LV8ya02.GpYjZJJmip1IMKB1PFPJ33Ycjsi2Hx2MRHxOw0N5Eb79ygc2N0aI2tl9iHxBTzJF3dkhGUVlWmLEaxG69EVd7RTjlzmPn5SBZzBl9MB2.YVYNvDIsgYc95xO_sZ6RbEYEiF8k_fAVXkDU2i1TTTGrtYWDZK5x.wBNGUzli.lkcMTvNlKoS6tfJlxnUtzOrIKAfkWN.YH0G6XRDlwobKznVWkZYKU5n4UGz.id4joRY_XOirrmNfZkJQ1IFn34_hTJ80Vg7xt__KIDS3jvgVp6uhm8X90MhrOY.UA3vK7U_4lhNK_tzRr1TAP.iKmQn8vvRz7heagj4zjsmAznfZarGtvgXHDbrx7yJT1HNg1pTP6vKK70ZCHr7NMbRxARhG3aKNKHk7aOeYVGS5aCRI7bA2wEq729Ud6E02qZd.3TZC6mgOZtAT4zhn_EZc4ddZ3HFODDewBefLBB196DuOWPMZcOu0cPyj7c83t60uGV.Ddk1iTT6zLqf.7XwXLJuSu_as3fWREYaf9b8qKozimXpP3weHc4sFTbWr9.KZ7IP.SfYh_vASfYA0OBC6fCmRHN1BmDeY_m2_cu7X1joSjjubGQGjuraR2KqC9zFDbfI6jHW4_JCmm6lm4K83pKxgEmiZ8f0rm6ZUvlNjkEncTmtqLvY4H48Hutqz16i.WIYtW8qlMPQ9Jrb4m3Nj160WZ2TxgZnF1R5xje3YtwHssB_1p.eOCKwOg.HT4vV1IpHrHWvCLH09RmkiU1OeDGSPfzcZaR_trJVZXrGKoHTca49ipPPhiiCIF3dZWohE.Op7PbQJprDGNmxtb91K9r5n44yMI_EAcG8NZL57NizwjI5BRHjTsHN6jYPUt5CINBH_AYvOa4Umnm7StDxEDuNU2Wk5m4idXn90Z2pnjBst2h43uCsSVchts5w.D3TcWktlK1kkf5nzyrXxEuzLrGX2HIfrXaWMyYrlFCaBENGSkpN.k6PMqRFCC_UekUCznjFE8lo8ROOjrqs4IzesGUe2JECg3ncoesxUHV4ElVDAOBQgotJ4Y2QywGfLbXjyXHrm8cwHNX9yhQZK7f3Mxo1LtsYLUHuSjc.aWJhwnRutK0NQeNMwXFA2FBog.XiSlm6h4EAJ1enkqPKWWjNcFHGxEBE0wLDeTJPq5xXjBmOsI2_GL78tSOFbXK8_xVqFa0WD_m815fKxTHYbW1Yto7m4Hp43dSQalXF2LaF_Cq4ZrfNZ0vostVNifs5qVyUtFLVqXd1hpjyjF_q13TDWwNhDNLGIEI0fh6S8wAYsQsRSX5YhtxQY_he7b6vYaksgxTuVMgKcwiGgDlsVvfZCBTA2p.hJvQbiA0UzGSaFGoqQ06tJG7BzStLjV7sHXDtB7yPYECQc6iRjnNTpMIPOHfVCaVtqZainLHZSrFiosdZpv80RerQEjSDbRo9QkaMiH7WxHC1vG4d1c.CrRCpiTuQM5k3R15zP6VBRttOBAV6_8o8AyRhVt41mWwO6Wl.6HqvTRArVA',};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=9cd5944e5e756920';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null,"\/api\/users?__cf_chl_rt_tk=TIDS1ggxyYgjFHmHdNKv3EAfw2CDZmCx3uhKZJXav.0-1770998852-1.0.1.1-HVyeTubKdBaiKjKKqHZGs1GHR39dP0H5SCExI.4v3xo"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>
+      '''
+    }
+  }
+}

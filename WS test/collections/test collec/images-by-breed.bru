@@ -1,0 +1,16 @@
+meta {
+  name: Images by Breed
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/breed/hound/images
+  body: none
+  auth: none
+}
+
+docs {
+  Retorna todas as imagens de uma raça específica
+  Substitua 'hound' pela raça desejada (ex: beagle, husky, labrador)
+}

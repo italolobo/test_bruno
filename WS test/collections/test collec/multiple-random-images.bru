@@ -1,0 +1,16 @@
+meta {
+  name: Multiple Random Images
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/breeds/image/random/3
+  body: none
+  auth: none
+}
+
+docs {
+  Retorna múltiplas imagens aleatórias de qualquer raça
+  Substitua o número 3 pela quantidade desejada (máximo 50)
+}

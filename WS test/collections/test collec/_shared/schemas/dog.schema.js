@@ -1,8 +1,8 @@
 const { z } = require("zod");
 
-const DogResponseSchema = z.object({
-  message: z.any(),
+const DogListSchema = z.object({
+  message: z.record(z.string(), z.array(z.string())),
   status: z.string(),
 });
 
-module.exports = { DogResponseSchema };
+module.exports = { DogListSchema };
