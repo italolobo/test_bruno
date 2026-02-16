@@ -1,6 +1,4 @@
 name: DEV
 variables:
   - name: base_url
-    value: https://dog.ceo/api
-  - name: base_url_2
-    value: https://jsonplaceholder.typicode.com
+    value: "{{process.env.BASE_URL}}"
